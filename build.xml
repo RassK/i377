@@ -1,6 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="i377.makejar" default="makejar" basedir=".">
-  <target name ="makejar" description="Create a jar for the HW project">
-    <jar jarfile="i377.jar" includes="*.class" basedir="bin"/>
-  </target>
+<?xml version="1.0" ?>
+<project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<!-- Properties -->
+
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build" />
+	<property name="classes.dir" location="${build.dir}/classes" />
+
+	<property name="webContent.dir" location="WebContent" />
+	<property name="war.file" location="hello.war" />
+
+	<property name="dir.lib" value="WebContent/WEB-INF/lib" />
+	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]­[type]­[revision].[ext]" />
+
+	<!-- Paths -->
+
+	<path id="classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${dir.lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- Targets -->
+	<target name="compile" depends="clean, init">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"
+		    classpathref="classpath" />
+	</target>
+
+	<target name="retrieve" description="retreive dependencies">
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant"
+			classpathref="classpath" />
+		<ivy:resolve file="${basedir}/ivy.xml" log="download­only" />
+		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
+	</target>
+
+	<target name="war" depends="compile">
+		<war destfile="${war.file}" webxml="${webContent.dir}/WEB-INF/web.xml">
+			<classes dir="${classes.dir}" />
+			<fileset dir="${webContent.dir}" excludes="**/servlet-api­jar­2.5.jar" />
+		</war>
+	</target>
+
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
 </project>
