@@ -11,12 +11,35 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>Hello</display-name>
-    <servlet-name>Hello</servlet-name>
-    <servlet-class>project.Hello</servlet-class>
+    <display-name>HomePage</display-name>
+    <servlet-name>HomePage</servlet-name>
+    <servlet-class>home.HomePage</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Hello</servlet-name>
-    <url-pattern>/Hello</url-pattern>
+    <servlet-name>HomePage</servlet-name>
+    <url-pattern>/HomePage</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>listeners.SessionCountListener</listener-class>
+  </listener>
+  <servlet>
+    <description></description>
+    <display-name>SessionCount</display-name>
+    <servlet-name>SessionCount</servlet-name>
+    <servlet-class>home.SessionCount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionCount</servlet-name>
+    <url-pattern>/SessionCount</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogOut</display-name>
+    <servlet-name>LogOut</servlet-name>
+    <servlet-class>home.LogOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogOut</servlet-name>
+    <url-pattern>/LogOut</url-pattern>
   </servlet-mapping>
 </web-app>
