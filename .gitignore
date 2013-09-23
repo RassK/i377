@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+
+# Include specific jar #
+!/lib/*.jar
