@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <!DOCTYPE project>
-<project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant"
+	default="war">
 
 	<!-- Properties -->
 	<property name="src.dir" location="src" />
