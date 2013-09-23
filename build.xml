@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE project>
 <project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant"
-    default="war">
+	default="war">
 
 	<!-- Properties -->
 	<property name="src.dir" location="src" />
@@ -13,7 +13,7 @@
 
 	<property name="dir.lib" value="WebContent/WEB-INF/lib" />
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]­[type]­[revision].[ext]" />
-	
+
 	<property name="dir.tomcat" value="/opt/tomcat7/" />
 	<property name="managerUrl" value="http://localhost:8080/manager/text" />
 	<property name="managerUsername" value="tomcat" />
@@ -51,7 +51,7 @@
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
 	</target>
 
-	<target name="war" depends="retrieve, compile">
+	<target name="war" depends="mklib, retrieve, compile">
 		<war destfile="${war.file}" webxml="${webContent.dir}/WEB-INF/web.xml">
 			<classes dir="${classes.dir}" />
 			<fileset dir="${webContent.dir}" excludes="**/servlet-api­jar­2.5.jar" />
@@ -68,6 +68,9 @@
 
 	<target name="init">
 		<mkdir dir="${classes.dir}" />
+	</target>
+
+	<target name="mklib">
 		<mkdir dir="${dir.lib}" />
 	</target>
 
