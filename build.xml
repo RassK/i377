@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <!DOCTYPE project>
 <project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant"
-	default="war">
+    default="war">
 
 	<!-- Properties -->
 	<property name="src.dir" location="src" />
@@ -51,7 +51,7 @@
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
 	</target>
 
-	<target name="war" depends="compile">
+	<target name="war" depends="retrieve, compile">
 		<war destfile="${war.file}" webxml="${webContent.dir}/WEB-INF/web.xml">
 			<classes dir="${classes.dir}" />
 			<fileset dir="${webContent.dir}" excludes="**/servlet-api­jar­2.5.jar" />
