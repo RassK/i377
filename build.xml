@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+﻿<?xml version="1.0" ?>
 <!DOCTYPE project>
 <project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant">
 
@@ -14,7 +14,7 @@
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]­[type]­[revision].[ext]" />
 	
 	<property name="dir.tomcat" value="/opt/tomcat7/" />
-	<property name="managerUrl" value="http://localhost:8080/manager/RassK" />
+	<property name="managerUrl" value="http://localhost:8080/manager/text" />
 	<property name="managerUsername" value="tomcat" />
 	<property name="managerPassword" value="tomcat" />
 
