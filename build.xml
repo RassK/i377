@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+﻿<?xml version="1.0" ?>
 <!DOCTYPE project>
 <project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant"
 	default="war">
@@ -14,12 +14,26 @@
 	<property name="dir.lib" value="WebContent/WEB-INF/lib" />
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]­[type]­[revision].[ext]" />
 
+	<property name="dir.tomcat" value="/opt/tomcat7/" />
+	<property name="managerUrl" value="http://localhost:8080/manager/text" />
+	<property name="managerUsername" value="tomcat" />
+	<property name="managerPassword" value="tomcat" />
+
 	<!-- Paths -->
 	<path id="classpath">
 		<fileset dir="lib">
 			<include name="*.jar" />
 		</fileset>
 		<fileset dir="${dir.lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="classpath.tomcat">
+		<fileset dir="${dir.tomcat}/lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${dir.tomcat}/bin">
 			<include name="*.jar" />
 		</fileset>
 	</path>
@@ -42,6 +56,14 @@
 			<classes dir="${classes.dir}" />
 			<fileset dir="${webContent.dir}" excludes="**/servlet-api­jar­2.5.jar" />
 		</war>
+	</target>
+
+	<target name="deploy" depends="war">
+		<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask"
+			classpathref="classpath.tomcat" />
+		<deploy url="${managerUrl}" username="${managerUsername}"
+			password="${managerPassword}" path="${deployContextPath}" update="true"
+			war="file:${war.file} " />
 	</target>
 
 	<target name="init">

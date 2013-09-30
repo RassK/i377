@@ -15,8 +15,17 @@ public class LogOut extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// End the session
-		request.getSession().invalidate();
+		logOut(request);
 		
 		response.getWriter().println("Your session is now ended!");
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// End the session
+		logOut(request);
+	}
+	
+	protected static void logOut(HttpServletRequest req){
+		req.getSession().invalidate();
 	}
 }
