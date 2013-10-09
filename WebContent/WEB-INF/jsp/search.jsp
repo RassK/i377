@@ -15,7 +15,7 @@
 	<jsp:include page="partial_menu.jsp" />
 	
 	<br><br><br>
-	<form method="GET" action="/i377/Search">
+	<form method="GET" action="/RassK/Search">
 		<input name="searchString" id="searchStringBox" value="${param.searchString}" />
 		<input type="submit" id="filterButton" value="Filtreeri" />
 		<br/><br/>
@@ -34,7 +34,7 @@
 						<td>
 						<div id="row_${each.code}">${each.name}</div></td>
 						<td>${each.code}</td>
-						<td><a href="/i377/Search?do=delete&id=${each.id}" id="delete_${each.code}">Kustuta</a></td>
+						<td><a href="/RassK/Search?do=delete&id=${each.id}" id="delete_${each.code}">Kustuta</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

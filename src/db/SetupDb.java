@@ -7,14 +7,15 @@ import org.apache.tools.ant.taskdefs.SQLExec;
 public class SetupDb extends AbstractDao {
 
 	public void createSchema(){
-		executeSqlFromFile(getClassPathFile("/sql/database.sql"));
+		executeSqlFromFile(getClassPathFile("/database.sql"));
 	}
 	
 	public void insertTestData(){
-		executeSqlFromFile(getClassPathFile("/sql/data.sql"));
+		executeSqlFromFile(getClassPathFile("/data.sql"));
 	}
 	
 	private String getClassPathFile(String filename){
+		System.out.println("Reading file: " + filename);
 		return getClass().getClassLoader().getResource(filename).getFile();
 	}
 	

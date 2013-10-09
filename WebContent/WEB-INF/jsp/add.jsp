@@ -15,7 +15,7 @@
 	<jsp:include page="partial_menu.jsp" />
 	<br><br><br>
 	
-	<form method="post" action="/i377/Add">
+	<form method="post" action="/RassK/Add">
 		<table class="formTable" id="formTable">
 			<tbody>
 				<tr>

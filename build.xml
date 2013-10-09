@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
-<project name="Hello" xmlns:ivy="antlib:org.apache.ivy.ant"
+<project name="RassK" xmlns:ivy="antlib:org.apache.ivy.ant"
 	default="war">
 
 	<!-- Properties -->
@@ -9,7 +9,7 @@
 	<property name="classes.dir" location="${build.dir}/classes" />
 
 	<property name="webContent.dir" location="WebContent" />
-	<property name="war.file" location="hello.war" />
+	<property name="war.file" location="RassK.war" />
 
 	<property name="dir.lib" value="WebContent/WEB-INF/lib" />
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]­[type]­[revision].[ext]" />
@@ -54,7 +54,9 @@
 	<target name="war" depends="mklib, retrieve, compile">
 		<war destfile="${war.file}" webxml="${webContent.dir}/WEB-INF/web.xml">
 			<classes dir="${classes.dir}" />
-			<fileset dir="${webContent.dir}" excludes="**/servlet-api­jar­2.5.jar" />
+			<fileset dir="${webContent.dir}" excludes="**/servlet-api*.jar,**/jsp-api*.jar" />
+			<fileset dir="${src.dir}" includes="**/*.sql" />
+			<fileset dir="." includes="lib/*.jar" />
 		</war>
 	</target>
 
