@@ -5,7 +5,7 @@ import org.apache.commons.dbutils.DbUtils;
 
 public class AbstractDao {
 	
-	public static final String Db_Location = "/data/rassk/hsqldb";
+	public static final String Db_Location = "/i377/rassk/db";
 	public static final String DB_URL = 
 			"jdbc:hsqldb:file:${user.home}" + Db_Location +";shutdown=true;";
 	
