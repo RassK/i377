@@ -8,7 +8,7 @@ import org.apache.tools.ant.taskdefs.SQLExec;
 public class SetupDb extends AbstractDao {
 
 	public void createSchema(){
-		//executeSqlFromFile(getClassPathFile("/sql/database.sql"));
+//		executeSqlFromFile(getClassPathFile("/sql/database.sql"));
 		
 		String query = "CREATE SEQUENCE seq1 AS INTEGER START WITH 1"
 						+ "CREATE TABLE unit ("
@@ -27,7 +27,7 @@ public class SetupDb extends AbstractDao {
 	}
 
 	public void insertTestData() {
-		// executeSqlFromFile(getClassPathFile("/sql/data.sql"));
+//		 executeSqlFromFile(getClassPathFile("/sql/data.sql"));
 		
 		String query = "INSERT INTO UNIT VALUES(NEXT VALUE FOR seq1,'CEO','1');"
 						+ "INSERT INTO UNIT VALUES(NEXT VALUE FOR seq1,'Administration','1-1');"
